@@ -1,5 +1,3 @@
-using System.Runtime.CompilerServices;
-
 namespace BtrCpu;
 
 public class Cpu
@@ -16,6 +14,7 @@ public class Cpu
     // 256 bytes of memory
     public byte[] Memory {get; } = new byte[256];
 
+    // MOV
     public void MOV(int register, byte value)
     {
         switch (register)
@@ -40,4 +39,56 @@ public class Cpu
                 throw new ArgumentException("Invalid register.");
         }
     }
+
+    // ADD
+    public void ADD(int destination, int source)
+    {
+        byte value;
+
+        switch (source)
+        {
+            case 0:
+                value = R0;
+                break;
+            
+            case 1:
+                value = R1;
+                break;
+            
+            case 2:
+                value = R2;
+                break;
+            
+            case 3:
+                value = R3;
+                break;
+            
+            default:
+                throw new ArgumentException("Invalid source register");
+        }
+
+        switch (destination)
+        {
+            case 0:
+                R0 += value;
+                break;
+            
+            case 1:
+                R1 += value;
+                break;
+            
+            case 2:
+                R2 += value;
+                break;
+
+            case 3:
+                R3 += value;
+                break;
+            
+            default:
+                throw new ArgumentException("Invalid dedstination register");
+        }
+    }
+
+
 }
