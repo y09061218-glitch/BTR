@@ -5,9 +5,11 @@
 
 ## 2. Architecture
 
-- Word Size: 8-bit
-- Registers: R0-R3
-- Memory: 256 bytes
+- Word Size     : 8-bit
+- Registers     : R0-R3
+- Memory        : 256 bytes
+- Signed Range  : -128 to 127
+- Unsigned Range: 0 to 255
 
 ## 3. Registers
 
