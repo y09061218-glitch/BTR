@@ -1,6 +1,3 @@
-using System.Runtime.CompilerServices;
-using System.Security.Cryptography.X509Certificates;
-
 namespace BtrCpu;
 
 public class Cpu
@@ -18,24 +15,30 @@ public class Cpu
     public byte[] Memory {get; } = new byte[256];
 
     // MOV
-    public void MOV(int register, byte value)
+    public void MOV(int register, int value)
     {
+        if (value < -128 || value > 255)
+        {
+            throw new ArgumentException(nameof(value));
+        }
+
+        byte bits = unchecked((byte)value);
         switch (register)
         {
             case 0:
-                R0 = value;
+                R0 = bits;
                 break;
             
             case 1:
-                R1 = value;
+                R1 = bits;
                 break;
             
             case 2:
-                R2 = value;
+                R2 = bits;
                 break;
             
             case 3:
-                R3 = value;
+                R3 = bits;
                 break;
             
             default:
