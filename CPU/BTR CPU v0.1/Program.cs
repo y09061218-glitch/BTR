@@ -16,3 +16,12 @@ cpu.ADD(0, 1);
 
 Console.WriteLine($"R0 = {cpu.R0}");
 Console.WriteLine($"R1 = {cpu.R1}");
+
+// SUB
+
+cpu.MOV(0, 30);
+cpu.MOV(3, 10);
+cpu.SUB(0, 3);
+
+Console.WriteLine($"R0 = {cpu.R0}");
+Console.WriteLine($"R3 = {cpu.R3}");

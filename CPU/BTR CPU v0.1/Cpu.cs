@@ -1,3 +1,6 @@
+using System.Runtime.CompilerServices;
+using System.Security.Cryptography.X509Certificates;
+
 namespace BtrCpu;
 
 public class Cpu
@@ -90,5 +93,53 @@ public class Cpu
         }
     }
 
+    //SUB
+    public void SUB(int destination, int source)
+    {
+        byte value;
 
+        switch (source)
+        {
+            case 0:
+                value = R0;
+                break;
+            
+            case 1:
+                value = R1;
+                break;
+            
+            case 2:
+                value = R2;
+                break;
+            
+            case 3:
+                value = R3;
+                break;
+            
+            default:
+                throw new ArgumentException("Invalid destination register");
+        }
+
+        switch (destination)
+        {
+            case 0:
+                R0 -= value;
+                break;
+            
+            case 1:
+                R1 -= value;
+                break;
+            
+            case 2:
+                R2 -= value;
+                break;
+            
+            case 3:
+                R3 -= value;
+                break;
+            
+            default:
+                throw new ArgumentException("Invalid source register");
+        }
+    }
 }
